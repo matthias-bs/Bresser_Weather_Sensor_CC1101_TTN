@@ -45,7 +45,7 @@ Unlike most modules/breakout boards, most (if not all) CC1101 modules sold on co
 
 Software for Arduino ESP32/ESP8266: [Bresser_WeatherStation_CC1101_TTN.ino](Bresser_WeatherStation_CC1101_TTN.ino)
 
-The payload data structure is encoded into bytes using a modified version of [Lora-Serialization](https://github.com/thesolarnomad/lora-serialization).
+The payload data structure is encoded into bytes using a [modified version of Lora-Serialization](src/LoRa_Serialization/src).
 
 **Note: `writeRawFloat()` is missing in the default Arduino library version!**
 
