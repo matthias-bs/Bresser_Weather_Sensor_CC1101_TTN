@@ -39,7 +39,15 @@ Unlike most modules/breakout boards, most (if not all) CC1101 modules sold on co
 **Note 2: Make sure to use the 868MHz version!**
 
 
-### 
+### Adafruit RFM95W LoRa Radio Transceiver Breakout
+
+The LoRa transceiver and antenna must be selected according to the [Frequency Plans by Country](https://www.thethingsnetwork.org/docs/lorawan/frequencies-by-country/).
+
+* [ADA3072](https://www.adafruit.com/product/3072) - 868/915 MHz version
+* [ADA3073](https://www.adafruit.com/product/3073) - 433 MHz version
+* RF connector
+* Antenna
+
 
 ## Software
 
