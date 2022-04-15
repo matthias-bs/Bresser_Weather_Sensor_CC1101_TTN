@@ -44,7 +44,7 @@ Unlike most modules/breakout boards, most (if not all) CC1101 modules sold on co
 ## Software
 
 ### The Things Network Decoder
-[ttn_decoder.js](ttn_decoder.js)
+Paste [ttn_decoder.js](ttn_decoder.js)  as "Custom Javascript formatter" to "Payload Formatters" -> "Uplink" on The Things Network Console.
 
 ### TTN-MQTT-Integration
 
@@ -63,7 +63,7 @@ v3 message key field jsonpaths:
 <payload> = .uplink_message.frm_payload
 ```  
 
-  
+
 JSON-Path with Uplink-Decoder (see [ttn_decoder.js](ttn_decoder.js))
 
 `.uplink_message.decoded_payload.bytes.<variable>`
