@@ -44,10 +44,13 @@ Unlike most modules/breakout boards, most (if not all) CC1101 modules sold on co
 ## Software
 
 ### The Things Network Decoder
-Paste [ttn_decoder.js](ttn_decoder.js)  as "Custom Javascript formatter" to "Payload Formatters" -> "Uplink" on The Things Network Console.
+
+Decode payload (a sequence of bytes) into data structures which are readable/suitable for further processing:
+paste [ttn_decoder.js](ttn_decoder.js)  as "Custom Javascript formatter" to "Payload Formatters" -> "Uplink" on The Things Network Console.
 
 ### TTN-MQTT-Integration
 
+How to receive and decode the payload with an MQTT client -
 see https://www.thethingsnetwork.org/forum/t/some-clarity-on-mqtt-topics/44226/2
 
 V3 topic:
