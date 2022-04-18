@@ -23,6 +23,26 @@ The Bresser 5-in-1 Weather Stations seem to use two different protocols. Select 
 
 ### ESP32
 
+Wiring:
+
+| ESP32        | CC1101 |       | RFM95W         |
+| ------------ | -------|------ | -------------- |
+| Name         | Pin#   | Func. |                |  
+| 3V3          | 1      | Vcc   | VIN            |
+| GND          | 2      | GND   | GND            |
+| GPIO23/MOSI2 | 3      | MOSI  | MOSI           |
+| GPIO18/SCK2  | 4      | SCK   | SCK            |
+| GPIO19/MISO2 | 5      | MISO  | MISO           |
+| GPIO04       | 6      | GDO2  |                |
+| GPIO26       | 7      | GDO0  |                |
+| GPIO15       | 8      | CS    |                |
+| GPIO27       |        |       | CS             |
+| GPIO21       |        |       | G0             |
+| GPIO33       |        |       | G1             |
+| GPIO25       |        |       | G2             |
+| GPIO32       |        |       | RST            |
+
+A buffer capacitor of ~10µF across the supply pins of the RFM95W module is recomended.
 
 ### CC1101
 
