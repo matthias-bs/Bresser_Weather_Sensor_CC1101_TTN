@@ -42,12 +42,12 @@
 // History:
 //
 // 20220309 Created
+// 20220418 Added status output pins SENSOR_DECOK and TTN_TXCOMPL
 //
 // ToDo:
 // 
 // - Check CC1101 receive buffer behaviour! Is it flushed after reading or
 //   does it overflow? Make sure that always fresh data is read.
-// - Send some data as BCD instead of float?
 //
 // Notes:
 //
@@ -145,19 +145,20 @@ const unsigned TX_INTERVAL  = 60;
 const uint8_t PAYLOAD_SIZE = 24;
 
 // Pin config
-#define PIN_CC1101_CS   15
-#define PIN_CC1101_GDO0 26
-#define PIN_CC1101_GDO2 4
-#define PIN_LMIC_NSS    27
-#define PIN_LMIC_RST    32
-#define PIN_LMIC_DIO0   21
-#define PIN_LMIC_DIO1   33
-#define PIN_LMIC_DIO2   25
-
+#define PIN_CC1101_CS     15
+#define PIN_CC1101_GDO0   26
+#define PIN_CC1101_GDO2   4
+#define PIN_LMIC_NSS      27
+#define PIN_LMIC_RST      32
+#define PIN_LMIC_DIO0     21
+#define PIN_LMIC_DIO1     33
+#define PIN_LMIC_DIO2     25
+#define PIN_SENSOR_DECOK  12
+#define PIN_TTN_TXCOMPL   13
 
 void os_getArtEui (u1_t* buf) { memcpy_P(buf, APPEUI, 8);}
 void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI, 8);}
-void os_getDevKey (u1_t* buf) {  memcpy_P(buf, APPKEY, 16);}
+void os_getDevKey (u1_t* buf) { memcpy_P(buf, APPKEY, 16);}
 
 // TX payload buffer
 static uint8_t loraData[PAYLOAD_SIZE];
@@ -297,7 +298,7 @@ void onEvent (ev_t ev) {
             }
             // Disable link check validation (automatically enabled
             // during join, but because slow data rates change max TX
-	    // size, we don't use it in this example.
+	          // size, we don't use it in this example.
             LMIC_setLinkCheckMode(0);
             break;
         /*
@@ -316,6 +317,7 @@ void onEvent (ev_t ev) {
             break;
         case EV_TXCOMPLETE:
             Serial.println(F("EV_TXCOMPLETE (includes waiting for RX windows)"));
+            digitalWrite(PIN_TTN_TXCOMPL, HIGH);
             if (LMIC.txrxFlags & TXRX_ACK)
               Serial.println(F("Received ack"));
             if (LMIC.dataLen) {
@@ -399,8 +401,10 @@ void do_send(osjob_t* j) {
         #endif
         if (decode_ok) {
             Serial.println(F("o.k."));
+            digitalWrite(PIN_SENSOR_DECOK, HIGH);
         } else {
             Serial.println(F("failed."));
+            digitalWrite(PIN_SENSOR_DECOK, LOW);
         }
         // FIXME: Send only new (valid) data, otherwise schedule next transmission
         LoraEncoder encoder(loraData);
@@ -424,6 +428,7 @@ void do_send(osjob_t* j) {
 
         // Prepare upstream data transmission at the next possible time.
         LMIC_setTxData2(1, loraData, sizeof(loraData), 0);
+        digitalWrite(PIN_TTN_TXCOMPL, LOW);
         Serial.println(F("Packet queued"));
     }
     // Next TX is scheduled after TX_COMPLETE event.
@@ -889,6 +894,11 @@ void setup() {
         while (true)
             ;
     }
+
+    // Configure status output pins
+    pinMode(PIN_SENSOR_DECOK, OUTPUT);
+    pinMode(PIN_TTN_TXCOMPL, OUTPUT);
+    
     weatherData = { 0 };
     Serial.println(F("[CC1101] Setup complete - awaiting incoming messages..."));
 
