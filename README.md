@@ -52,6 +52,7 @@ You might want to connect an LED (with a resistor to GND) to those pins.
 
 A buffer capacitor of ~10µF across the supply pins of the RFM95W module is recomended.
 
+
 ### CC1101
 
 [Texas Instruments CC1101 Product Page](https://www.ti.com/product/CC1101)
@@ -76,9 +77,12 @@ The LoRa transceiver and antenna must be selected according to the [Frequency Pl
 * RF connector
 * Antenna
 
+**Note: In a 868MHz LoRaWAN region, the RFM95W could probably be used to receive the weather sensor data. Thus, the transceiver module would be switched between FSK mode for sensor data reception and LoRaWAN mode for the uplink to The Things Network.**
+
+
 ### Antennas and RF Connectors
 
-The required antenna depends on the signal path between weather sensor and CC1101 reveiver or RFM95W transceiver and LoRaWAN gateway, respectively. Some options are:
+The required antenna depends on the signal path between weather sensor and CC1101 receiver or RFM95W transceiver and LoRaWAN gateway, respectively. Some options are:
 * wire antenna
 * spring antenna (helical wire coil)
 * rubber antenna
