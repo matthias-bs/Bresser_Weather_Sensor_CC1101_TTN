@@ -78,7 +78,7 @@ The LoRa transceiver and antenna must be selected according to the [Frequency Pl
 * Antenna
 
 **Note:**
-In a 868MHz LoRaWAN region, the RFM95W ~~could probably~~ can be used to receive the weather sensor data. Thus, the transceiver module would be switched between FSK mode for sensor data reception and LoRaWAN mode for the uplink to The Things Network.**
+In a 868MHz LoRaWAN region, the RFM95W ~~could probably~~ can be used to receive the weather sensor data. Thus, the transceiver module would be switched between FSK mode for sensor data reception and LoRaWAN mode for the uplink to The Things Network.
 
 ### Antennas and RF Connectors
 
