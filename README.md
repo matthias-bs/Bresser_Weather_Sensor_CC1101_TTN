@@ -1,3 +1,8 @@
+> :warning: This repository is deprecated and no longer maintained. 
+> The recommended alternative is [BresserWeatherSensorTTN](/matthias-bs/BresserWeatherSensorTTN)
+> which provides a much cleaner design (separation between Weather Sensor and TTN code) and allows 
+> to share a RFM95W/SX1276 radio transceiver between weather data reception (FSK mode) and TTN communication (LoRaWAN mode).
+
 # Bresser_Weather_Sensor_CC1101_TTN
 Bresser 5-in-1/6-in-1 868 MHz Weather Sensor Radio Receiver based on CC1101, ESP8266/ESP32 and RFM95W - provides data via LoRaWAN to The Things Network
 
