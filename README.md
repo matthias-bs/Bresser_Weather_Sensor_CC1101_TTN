@@ -1,5 +1,5 @@
 > :warning: This repository is deprecated and no longer maintained. 
-> The recommended alternative is [BresserWeatherSensorTTN](/matthias-bs/BresserWeatherSensorTTN)
+> The recommended alternative is [BresserWeatherSensorTTN](matthias-bs/BresserWeatherSensorTTN)
 > which provides a much cleaner design (separation between Weather Sensor and TTN code) and allows 
 > to share a RFM95W/SX1276 radio transceiver between weather data reception (FSK mode) and TTN communication (LoRaWAN mode).
 
